@@ -6,6 +6,11 @@ Leser søker bok has three main websites:
 
 This repository contains the code for the two first sites, the third runs on wordpress.com.
 
+## Gitter
+This repository has a chatroom on Gitter:  
+
+[![Join the chat at https://gitter.im/lesersokerbok/lsb-wordpress-themes](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lesersokerbok/lsb-wordpress-themes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Themes
 There are three themes: 
 * `lsb-base-theme`
