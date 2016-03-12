@@ -11,43 +11,49 @@
    ========================================================================== */
 
 .page-template-template-frontpage-php .frontpage-section {
-
-  margin-top: @jumbotron-padding;
-  margin-bottom: @jumbotron-padding*3;
+  
+  margin-bottom: @line-height-computed * 3;
+  
+  &:first-child {
+    margin-top: @line-height-computed;
+  }
+  
   &:last-child {
     margin-bottom: 0;
   }
 
   .section-header {
-
     .page-header;
-
-    margin-bottom: @jumbotron-padding/2;
-
-    p {
-      font-size: @jumbotron-font-size;
-    }
+    padding-bottom: 0;
   }
 
-  &.text {
-    .jumbotron {
-
-      text-align: center;
-
-      .entry-content-asset {
-        max-width: 750px;
-        margin: 2em auto 0 auto;
-      }
-
-      :last-child {
-        margin-bottom: 0;
-      }
+  &.frontpage-section-hero {
+    
+    h1, .h1 {
+      font-size: @font-size-h1;
     }
+    
+    .entry-content-asset p {
+      margin-bottom: 0;
+    }
+    
+  }
+  
+  &.frontpage-section-alert {
+    
+    .alert {
+      margin: 0;
+    }
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
   }
 
-  &.boxes {
+  &.frontpage-section-grid {
 
-    .box {
+    .grid-element {
       padding: 0 @panel-body-padding;
       h3 {
         font-size: ceil((@font-size-base * 1.125));
@@ -55,7 +61,8 @@
     }
   }
 
-  &.rss {
+  &.frontpage-section-lsb_book_feed,
+  &.frontpage-section-normal_feed {
 
     .rss-post {
 
@@ -77,18 +84,23 @@
       }
 
       .rss-image {
-        width: 100%;
-        height: 200px;
         overflow: hidden;
 
         img {
-          max-width: 100%;
-          .lsb-vertical-align;
+          display: inline-block;
+          width:100%;
+          max-height: 100%;
         }
-
-        @media (min-width: @screen-md-min) {
+        
+        @media (min-width: @screen-md-min) { 
           text-align: center;
+          height: 200px;
+          
+          img {
+            width: auto;
+          }
         }
+        
       }
     }
   }

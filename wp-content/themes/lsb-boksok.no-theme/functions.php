@@ -11,11 +11,11 @@
  */
 $roots_includes = array(
   'lib/lsb-book.php',
-  'lib/lsb-book-page.php',
-  'lib/lsb-feed-util.php',
+  'lib/lsb-page-sections.php',
   'lib/lsb-boksok-options.php',
   'lib/taxonomy-util.php',
   'lib/lsb-filter-query-util.php',
+  'lib/lsb-page-sections-util.php',
   'lib/lsb-search-util.php'
 );
 
@@ -29,17 +29,12 @@ foreach ($roots_includes as $file) {
 unset($file, $filepath);
 
 // Initialize custom functionality
-new LsbBook();  
-new LsbFeedUtil();
+new LsbBook();
 new LsbBoksokOptions();
-new LsbBookPage();
+new LsbPageSections();
 
 add_filter( 'query_vars', function ($query_vars) {
-  $lsb_book_tax_objects = get_object_taxonomies('lsb_book', 'objects' );
-  foreach ($lsb_book_tax_objects as &$tax_object) {
-    $query_vars[] = TaxonomyUtil::get_tax_object_rewrite_slug($tax_object);
-  }
-  return $query_vars;
+  return array_merge($query_vars, LsbFilterQueryUtil::possible_query_vars_for_lsb_book());
 });
 
 function add_book_page_filter_css( $classes) {
@@ -61,7 +56,9 @@ function searchwp_activate_cat_menu_item( $classes) {
 }
 
 function searchwp_filter_search( $ids, $engine, $terms ) {
-  return LsbSearchUtil::filter_search();
+  /* Use this filter to define the pool of potential results SearchWP can use when running searches. */
+  /* https://searchwp.com/docs/hooks/searchwp_include/ */
+  return LsbSearchUtil::books_matching_current_query_vars();
 }
 
 add_filter( 'body_class', 'add_book_page_filter_css', 100, 2);

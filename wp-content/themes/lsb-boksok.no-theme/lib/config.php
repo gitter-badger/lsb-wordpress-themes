@@ -4,16 +4,14 @@
  */
 add_theme_support('soil-clean-up');         // Enable clean up from Soil
 add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
+//add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-
-define('GOOGLE_ANALYTICS_ID', BOKSOK_GOOGLE_ANALYTICS_ID);
-define('BLOG_ARCHIVE_TITLE', ''); // The title of the main blog archive, default "siste innlegg"
+define('GOOGLE_ANALYTICS_ID', BOKSOK_GOOGLE_ANALYTICS_ID); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 
 /**
  * .main classes
@@ -77,8 +75,7 @@ function roots_display_sidebar() {
      * Any of these page templates that return true won't show the sidebar
      */
     array(
-      'template-boksok-frontpage.php',
-      'template-boksok-book-page.php',
+      'template-front-page.php',
     )
   );
 
